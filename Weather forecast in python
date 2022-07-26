@@ -1,1 +1,26 @@
 
+import requests,json
+
+api = "571c93860ecf860b60a4cd2a3983b5c8"
+url = "https://api.openweathermap.org/data/2.5/weather?"
+
+city = input("Enter city name : ")
+
+city_url = url + "&q=" + city +"&appid=" + api
+open_url = requests.get(city_url)
+data = open_url.json()
+mai = data['main']['temp']
+
+choice = input("choose temp type by entering 1,2 or 3 : 1.kelvin 2.celcius 3.farenheit")
+ 
+if choice == "1":
+    print("temperature = "+str(mai))
+    
+elif  choice == "2":
+    mai -= 273
+    print("temperature =" + str(mai))
+
+elif choice == "3":
+    mai += 273 
+    print ("temperature =" + str(mai))
+
